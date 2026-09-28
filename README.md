@@ -28,6 +28,8 @@ The package follows the Mu2e `art` analyzer workflow described in the [Mu2e GitH
 
 Build and run this package inside a compatible Mu2e Offline `art` environment. The scripts and FHiCL files contain environment-specific release, dataset, and grid settings; review those values and the input calibration files for the target dataset before submitting jobs.
 
+The PDF output strings in `drawPanelDifferences2.cpp` use the placeholder `your-pdf-path/`. Replace it with a writable output directory before running the macro.
+
 ## Related repositories
 
 - [CameraMetrologyImageGrab_Processing](https://github.com/dylancpalo/CameraMetrologyImageGrab_Processing) captures and processes camera images and imports station-assembly measurements into PostgreSQL.
