@@ -13,6 +13,7 @@ This is the track-based stage of a broader geometry workflow. [MetrologyMain](ht
 - `grid.sh` — example grid workflow for reconstruction.
 - `gridMacro.sh` — example grid workflow for running the analyzer.
 - `TrackerCalib_Palo/` — calibration, timing, panel-map, and alignment text/FHiCL inputs used by the supplied workflows.
+
 ## Workflow
 
 1. Run reconstruction with the desired calibration and alignment inputs.
