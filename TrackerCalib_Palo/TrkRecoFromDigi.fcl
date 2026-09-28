@@ -1,0 +1,16 @@
+#include "Production/JobConfig/reco/Extracted.fcl"
+
+# physics.producers.KKLine.ModuleSettings.SampleSurfaces : @local::Mu2eKinKal.producers.KKLine.ModuleSettings.SampleSurfaces
+
+physics.RecoPath: [
+  makeSH,
+  SimpleTimeCluster,
+  CosmicShowerFilter,
+  LineFinder,
+  KKLine,
+  KLFilter,
+  SelectReco
+   ]
+
+#include "PassN/TrackerCalib_Palo/TrkReco_epilog.fcl"
+#include "PassN/TrackerCalib_Palo/TrkReco_calib_Duke_Cam.fcl"

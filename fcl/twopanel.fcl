@@ -1,0 +1,54 @@
+#
+# Run the All01 example
+#
+
+#include "Offline/fcl/minimalMessageService.fcl"
+#include "Offline/fcl/standardServices.fcl"
+
+process_name : AlignmentTrackAnalyzer
+
+source : {
+  module_type : RootInput
+}
+
+services : @local::Services.Core
+#services : {
+#            @local::Services.Core	
+#  message : @local::default_message
+#}
+
+physics :{
+
+  analyzers : {
+    a1 : {
+      module_type : AlignmentTrackAnalyzer
+      kalSeedsTag : KKLine
+      tmin        : 0.     # (ns) no fiducial time cut
+      maxPrint    : 10
+
+      # Track/hit selection parameters.  These values reproduce the
+      # original AlignmentTrackAnalyzer selection.
+      maxChi2Dof                    : 8.0
+      minAbsFitDOCA                 : 0.5
+      minEvenStrawsPerPanel         : 4
+      minOddStrawsPerPanel          : 4
+      minGoodHitsPerQualityPanel    : 6
+      minGoodHits                   : 10
+      minQualityPanelIntersections  : 2
+      maxQualityPanelIntersections  : 3
+      minXYSpan                     : 0.0   # mm; set desired XY-span cut here
+      minZSpan                      : 0.0
+    }
+  }
+
+  p1 : []
+  e1 : [a1]
+
+  trigger_paths  : []
+  end_paths      : [e1]
+
+}
+
+services.TFileService.fileName : "nts.6panel.noCam_YesDukeMix1BBSignal.Tutorial_2024_03.SEQUENCE.root"
+
+

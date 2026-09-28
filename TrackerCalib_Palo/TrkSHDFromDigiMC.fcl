@@ -1,0 +1,24 @@
+#include "PassN/Tracker/TrkRecoFromDigiMC.fcl"
+
+physics.analyzers.SHD: {
+          module_type: StrawHitDiag
+          DigiDiag: true
+          MonteCarloDiag: true
+          UseStrawHitFlagCollection: false
+          ProtonBunchTime: EWMProducer
+          StrawHitFlagCollection: ""
+          TimeClusterCollection: SimpleTimeCluster
+          StrawDigiCollection: makeSD
+          StrawDigiMCCollection: compressDigiMCs
+          StrawHitCollection: makeSH
+          ComboHitCollection: makeSH
+      }
+
+physics.EndPath : [
+  "SHD"
+]
+
+physics.RecoPath : [
+  "makeSH",
+  "SimpleTimeCluster"
+]

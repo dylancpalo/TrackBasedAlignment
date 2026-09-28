@@ -1,0 +1,4 @@
+#include "PassN/Tracker/TrkSHDFromDigi.fcl"
+#include "PassN/Tracker/TrkRecoFromFragments_epilog.fcl"
+
+physics.producers.SimpleTimeCluster.minNStrawHits : 6

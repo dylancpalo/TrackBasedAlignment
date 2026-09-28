@@ -1,0 +1,27 @@
+physics.producers.EWMProducer: {
+          @table::CommonMC.DigiProducers.EWMProducer
+          SpillType: 0
+      }
+physics.producers.makeSD: {
+          module_type: StrawDigisFromArtdaqFragments
+          saveWaveforms : true
+          diagLevel     : 0  # not used yet
+          missingDTCHeaders : false
+          debugBits: []
+          debugMode: 0
+          keyOnMnid: false
+          allowOfflineFallbackWhenPanelMapMissing: false
+          forceOfflineAddressing: false
+      }
+
+services.RandomNumberGenerator   : { defaultEngineKind: "MixMaxRng" }
+services.SeedService                    : @local::automaticSeeds
+services.SeedService.baseSeed : 8
+
+physics.RecoPath: [
+  makeSD,
+  EWMProducer,
+  @sequence::physics.RecoPath
+]
+
+services.ProditionsService.trackerPanelMap.useDb : true

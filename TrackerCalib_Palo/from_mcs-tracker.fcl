@@ -1,0 +1,17 @@
+#include "EventNtuple/fcl/from_mcs-mockdata.fcl"
+
+physics.EventNtuplePath : [ @sequence::EventNtuple.PathExt ] # path for extracted position cosmics
+physics.analyzers.EventNtuple.FillTriggerInfo: false
+physics.analyzers.EventNtuple.FitType : "KinematicLine"
+physics.analyzers.EventNtuple.trk.fillTrkQual : false
+physics.analyzers.EventNtuple.trk.fillHitCalibs : false
+physics.analyzers.EventNtuple.trk.mc.fill : false
+physics.analyzers.EventNtuple.trk.fits[0].options.fillMC : false
+physics.analyzers.EventNtuple.trk.fits[0].input : "MergeKKLine"
+#physics.producers.MergeKKLine.KalSeedCollections: [ "RegrowKL" ]
+physics.analyzers.EventNtuple.mc.fill : false
+
+physics.analyzers.EventNtuple.calo.fill : false
+physics.analyzers.EventNtuple.crv.fill : false
+
+services.GeometryService.inputFile: "Production/JobConfig/cosmic/geom_cosmic_extracted.txt"

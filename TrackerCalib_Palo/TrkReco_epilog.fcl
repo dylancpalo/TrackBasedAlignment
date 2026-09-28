@@ -1,0 +1,79 @@
+services.ProditionsService.strawResponse.truncateLongitudinal : true
+services.ProditionsService.strawResponse.wireLengthBuffer : 0.0
+services.ProditionsService.strawResponse.strawLengthFactor : 1.0
+services.ProditionsService.strawResponse.errorFactor : 2.0
+
+physics.producers.makeSH.MinimumEnergy : 0.0006
+
+physics.producers.SimpleTimeCluster.HitNonNoiseSelectionBits : ["EnergySelection"]
+physics.producers.SimpleTimeCluster.minNStrawHits : 8
+
+physics.producers.CosmicShowerFilter.ComboHitCollection : makeSH
+physics.producers.CosmicShowerFilter.maxTotalSameGap : 6
+physics.producers.CosmicShowerFilter.maxCrossingGap : 8
+physics.producers.CosmicShowerFilter.maxSameGap : 3
+physics.producers.CosmicShowerFilter.maxNPanel : 36
+physics.producers.CosmicShowerFilter.cutSingleLayer : true
+
+physics.producers.LineFinder.minPeak : 8
+physics.producers.LineFinder.NSteps: 5
+physics.producers.LineFinder.StepSize: 0.25
+physics.producers.LineFinder.TimeClusterCollection : "CosmicShowerFilter"
+
+physics.producers.KKLine.ModuleSettings.ParameterConstraints : [0.0,0.2,0.0,0.0,0.0,1e-4]
+physics.producers.KKLine.KKFitSettings.MaxStrawUposBuffer : 200
+physics.producers.KKLine.ModuleSettings.SampleTimeBuffer : 10
+physics.producers.KKLine.KKFitSettings.UseCaloCluster : false
+physics.producers.KKLine.KKFitSettings.SkipStrawCheck : true
+physics.producers.KKLine.KKFitSettings.AddStrawMinDz : 1e-3
+physics.producers.KKLine.KKFitSettings.StrawNBuffer : 3
+physics.producers.KKLine.ExtensionSettings.BFieldCorrection: false
+physics.producers.KKLine.ExtensionSettings.MetaIterationSettings : [
+      # annealing temp, strawhit updater algorithms
+      [ 2.0, "CADSHU" ],
+      [ 1.0, "CADSHU" ],
+      [ 0.3, "CADSHU" ],
+      [ 0.0, "CADSHU" ],
+      [ 3.0, "CADSHU" ],
+      [ 2.0, "CADSHU" ],
+      [ 2.0, "CADSHU" ],
+      [ 2.0, "CADSHU" ],
+      [ 2.0, "CADSHU" ],
+      [ 1.0, "CADSHU" ],
+      [ 0.0, "CADSHU" ]
+    ]
+physics.producers.KKLine.ExtensionSettings.CADSHUSettings : [
+      # maxdoca, maxderr, minrdrift, maxrdrift, flag, allow, freeze, diag
+      [ 10.0, 20.0, 5.0, 5.0, "TOT:LongVal", "Null:Inactive", "", 1 ],
+      [ 10.0, 20.0, 5.0, 4.0, "TOT:LongVal", "Null:Inactive", "", 1 ],
+      [ 8.0,  16.0, 5.0, 3.0, "TOT:NullDriftVar:LongVal", "Null:Inactive", "", 1 ],
+      [ 8.0,  16.0, 5.0, 3.0, "TOT:NullDriftVar:LongVal", "Null:Inactive", "", 1 ],
+      [ 6.0,  10.0, 2.25, 3.0, "TOT:NullDriftVar:LongVal", "Null:Inactive:Drift", "", 1 ],
+      [ 5.0,  10.0, 2.0, 3.0, "TOT:NullDriftVar:LongVal:DriftDt", "Null:Inactive:Drift", "", 1 ],
+      [ 5.0,  10.0, 1.5, 3.0, "TOT:NullDriftVar:LongVal:DriftDt", "Null:Inactive:Drift", "", 1 ],
+      [ 5.0,  10.0, 1.0, 3.0, "TOT:NullDriftVar:LongVal:DriftDt", "Null:Inactive:Drift", "", 1 ],
+      [ 5.0,  10.0, 0.75, 3.0, "TOT:NullDriftVar:LongVal:DriftDt", "Null:Inactive:Drift", "", 1 ],
+      [ 5.0,  10.0, 0.5, 3.0, "TOT:NullDriftVar:LongVal:DriftDt", "Null:Inactive:Drift", "", 1 ],
+      [ 5.0,  10.0, 0.5, 3.0, "TOT:NullDriftVar:LongVal:DriftDt", "Null:Inactive:Drift", "", 1 ]
+    ]
+physics.producers.KKLine.ExtensionSettings.BkgANNSHUSettings : [
+    ]
+physics.producers.KKLine.ExtensionSettings.DriftANNSHUSettings : [
+    ]
+physics.producers.KKLine.ExtensionSettings.Chi2SHUSettings : [
+    ]
+physics.producers.KKLine.ExtensionSettings.StrawXingUpdaterSettings : [
+      # maxdoca, maxdoca unaveraged, maxdoca error unaveraged,  scale with temp?
+      [2.5, 10.0, true, 0 ],
+      [2.5, 5.0, true, 0 ],
+      [2.5, 2.0, true, 0 ],
+      [2.5, 1.0, false, 0 ]
+    ]
+
+physics.filters.KLFilter.KalSeedCuts[0].minNPlanes : 1
+physics.filters.KLFilter.KalSeedCuts[0].minNStereo : 1
+physics.filters.KLFilter.KalSeedCuts[0].minNStrawHits : 5
+physics.filters.KLFilter.KalSeedCuts[0].minFitCons: -9e9
+
+#physics.producers.KKLine.KKFitSettings.SaveHitCalibInfo : false
+physics.producers.KKLine.KKFitSettings.SaveHitCalibInfo : true

@@ -1,0 +1,6 @@
+services.DbService.purpose : "TRACKER_VST"
+services.DbService.version: v2_0
+services.DbService.textFile : ["PassN/Tracker/TrkPanelMap.txt", "PassN/Tracker/currentcalib.txt"]
+#include "PassN/Tracker/currentcalib.fcl"
+
+# services.DbService.nearestMatch : true
